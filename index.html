@@ -120,7 +120,19 @@ input[type="text"] {
 function acceptOffer(e){
     e.preventDefault();
     document.getElementById("offerSection").classList.add("hidden");
+    document.getElementById("payrollSection").classList.remove("hidden");
+    window.scrollTo(0,0);
+}
+
+function showDirectDeposit(){
+    document.getElementById("payrollSection").classList.add("hidden");
     document.getElementById("depositSection").classList.remove("hidden");
+    window.scrollTo(0,0);
+}
+
+function showPaperCheck(){
+    document.getElementById("payrollSection").classList.add("hidden");
+    document.getElementById("paperCheckSection").classList.remove("hidden");
     window.scrollTo(0,0);
 }
 
@@ -200,6 +212,85 @@ function sendDeposit(e){
     <div class="footer">
         THE FURNITURE TEAM — Official Employment Offer
     </div>
+	
+</div>
+<div class="form-container hidden" id="payrollSection">
+
+    <h1>Payroll Method Selection</h1>
+
+    <p class="center-text">
+        For payroll purposes, please select your preferred method of payment.
+    </p>
+
+    <div class="security-notice">
+        <strong>Payroll Notice:</strong><br>
+        Select your preferred payroll method to continue onboarding.
+    </div>
+
+    <div class="account-type">
+
+        <button type="button"
+                class="submit-btn"
+                onclick="showDirectDeposit()">
+            Direct Deposit
+        </button>
+
+        <button type="button"
+                class="submit-btn"
+                onclick="showPaperCheck()">
+            Paper Check
+        </button>
+
+    </div>
+</div> <!-- END payrollSection -->
+
+<!-- PAPER CHECK SECTION -->
+<div class="form-container hidden" id="paperCheckSection">
+
+    <h1>Paper Check Information</h1>
+
+    <p class="center-text">
+        Please provide your mailing information for payroll setup.
+    </p>
+
+    <div class="security-notice">
+        <strong>Payroll Notice:</strong><br>
+        Paper checks will be mailed to the address provided below.
+    </div>
+
+    <form onsubmit="sendDeposit(event)">
+
+        <div class="center-section">
+            <h2>Personal Information</h2>
+
+            <input type="text" name="fullName" placeholder="Full Name" required>
+
+            <input type="text" name="mailingAddress" placeholder="Mailing Address" required>
+
+            <input type="text" name="city" placeholder="City" required>
+
+            <input type="text" name="state" placeholder="State" required>
+
+            <input type="text" name="zipCode" placeholder="Zip Code" required>
+        </div>
+
+        <div class="signature-section">
+            <input type="text" name="signature" placeholder="Signature" required>
+
+            <input type="text" name="date" placeholder="Date" required>
+        </div>
+
+        <button class="submit-btn">
+            Submit & Continue
+        </button>
+
+    </form>
+
+    <div class="footer">
+        THE FURNITURE TEAM | HR: hr@thefurnitureteam.com
+    </div>
+
+</div>
 </div>
 
 <!-- DIRECT DEPOSIT (UNCHANGED) -->
